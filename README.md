@@ -1,5 +1,5 @@
 
-## is <sup>v1.0</sup>
+## is
 
 type checking for js.
 
