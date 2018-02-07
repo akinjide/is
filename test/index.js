@@ -17,5 +17,6 @@ describe('queries', function() {
     var actual = is.promise(promise);
     var expected = true;
     assert.equal(actual, expected);
+    done();
   });
 });
