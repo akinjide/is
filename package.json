@@ -1,0 +1,26 @@
+{
+  "name": "is",
+  "version": "1.0.0",
+  "description": "type checking for js",
+  "main": "index.js",
+  "keywords": ["node", "type", "strict", "typecheck", "is"],
+  "author": "Akinjide Bankole <r@akinjide.me>",
+  "scripts": {
+    "test": "mocha --reporter dot --growl --bail --ui bdd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akinjide/is.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/akinjide/is/issues"
+  },
+  "homepage": "https://github.com/akinjide/is#readme",
+  "devDependencies": {
+    "mocha": "*",
+    "assert": "^1.4.1",
+    "size": "github:akinjide/size"
+  },
+  "license": "MIT"
+}
