@@ -13,7 +13,8 @@ var methods = {
   'string': isString,
   'symbol': isSymbol,
   'boolean': isBoolean,
-  'error': isError
+  'error': isError,
+  'regExp': isRegExp
 };
 
 
@@ -149,4 +150,17 @@ function isBoolean(val) {
 
 function isError(val) {
   return Error == val.constructor;
+}
+
+/**
+ * Check for plain regex
+ *
+ * @param {Mixed} val
+ * @return {Boolean}
+ * @api private
+ *
+*/
+
+function isRegExp(val) {
+  return RegExp == val.constructor;
 }

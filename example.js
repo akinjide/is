@@ -18,3 +18,4 @@ function* generator(i) {
 
 console.log(is.promise(promise));
 console.log(is.generatorFunction(generator(10)));
+console.log(is.regExp(/\.js$/));
