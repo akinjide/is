@@ -15,7 +15,7 @@ var methods = {
   'boolean': isBoolean,
   'error': isError,
   'infinite': isInfinite,
-  'instance': isInstance
+  'instance': isInstance,
   'regExp': isRegExp
 };
 
@@ -180,7 +180,7 @@ function isInstance(val, constructor) {
 }
 
 /**
- * Check for plain regex
+ * Check for plain regex.
  *
  * @param {Mixed} val
  * @return {Boolean}
