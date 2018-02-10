@@ -16,6 +16,7 @@ var methods = {
   'error': isError,
   'infinite': isInfinite,
   'instance': isInstance
+  'regExp': isRegExp
 };
 
 
@@ -176,4 +177,16 @@ function isInfinite(val) {
 
 function isInstance(val, constructor) {
   return val instanceof constructor;
+}
+
+/**
+ * Check for plain regex
+ *
+ * @param {Mixed} val
+ * @return {Boolean}
+ * @api private
+ */
+
+function isRegExp(val) {
+  return RegExp == val.constructor;
 }
