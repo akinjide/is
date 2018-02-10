@@ -13,7 +13,9 @@ var methods = {
   'string': isString,
   'symbol': isSymbol,
   'boolean': isBoolean,
-  'error': isError
+  'error': isError,
+  'infinite': isInfinite,
+  'instance': isInstance
 };
 
 
@@ -88,7 +90,7 @@ function isObject(val) {
  */
 
 function isArray(val) {
-  return Array == val.constructor;
+  return Array == val.constructor || Array.isArray.call(null, val);;
 }
 
 /**
@@ -149,4 +151,29 @@ function isBoolean(val) {
 
 function isError(val) {
   return Error == val.constructor;
+}
+
+/**
+ * Check for plain infinity.
+ *
+ * @param {Mixed} val
+ * @return {Boolean}
+ * @api private
+ */
+
+function isInfinite(val) {
+  return val == Infinity || val == -Infinity;
+}
+
+/**
+ * Check for instance.
+ *
+ * @param {Mixed} val
+ * @param {Constructor} constructor
+ * @return {Boolean}
+ * @api private
+ */
+
+function isInstance(val, constructor) {
+  return val instanceof constructor;
 }

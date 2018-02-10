@@ -1,5 +1,6 @@
 
 ## is
+[![Build Status][travis-svg]][travis-url]
 
 type checking for js.
 
@@ -25,3 +26,6 @@ $ npm install akinjide/is
 ## License
 
 MIT
+
+[travis-svg]: https://travis-ci.org/akinjide/is.svg?branch=master
+[travis-url]: https://travis-ci.org/akinjide/is
