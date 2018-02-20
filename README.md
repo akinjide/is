@@ -22,6 +22,11 @@ $ npm install akinjide/is
 - is.symbol
 - is.boolean
 - is.error
+- is.infinite
+- is.instance
+- is.regExp
+- is.func
+- is.asyncFunction
 
 ## License
 
