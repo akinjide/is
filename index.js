@@ -16,7 +16,9 @@ var methods = {
   'error': isError,
   'infinite': isInfinite,
   'instance': isInstance,
-  'regExp': isRegExp
+  'regExp': isRegExp,
+  'asyncFunction': isAsyncFunction,
+  'func': isFunction
 };
 
 
@@ -189,4 +191,36 @@ function isInstance(val, constructor) {
 
 function isRegExp(val) {
   return RegExp == val.constructor;
+}
+
+/**
+ * Check if `obj` is a async function.
+ *
+ * @param {Mixed} obj
+ * @return {Boolean}
+ * @api private
+ */
+
+function isAsyncFunction(obj) {
+  var constructor = obj.constructor;
+
+  if (!constructor) return false;
+  if ('AsyncFunction' === constructor.name || 'AsyncFunction' === constructor.displayName) return true;
+  return false;
+}
+
+/**
+ * Check if `obj` is a function.
+ *
+ * @param {Mixed} obj
+ * @return {Boolean}
+ * @api private
+ */
+
+function isFunction(obj) {
+  var constructor = obj.constructor;
+
+  if (!constructor) return false;
+  if ('Function' === constructor.name || 'Function' === constructor.displayName) return true;
+  return isGeneratorFunction(obj) || isAsyncFunction(obj);
 }
