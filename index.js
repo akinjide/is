@@ -18,7 +18,12 @@ var methods = {
   'instance': isInstance,
   'regExp': isRegExp,
   'asyncFunction': isAsyncFunction,
-  'func': isFunction
+  'func': isFunction,
+  'undef': isUndefined,
+  'nil': isNull,
+  'iterable': isIterable,
+  'globalContext': isGlobalContext,
+  'cyclic': isCyclic
 };
 
 
@@ -223,4 +228,90 @@ function isFunction(obj) {
   if (!constructor) return false;
   if ('Function' === constructor.name || 'Function' === constructor.displayName) return true;
   return isGeneratorFunction(obj) || isAsyncFunction(obj);
+}
+
+/**
+ * Check for plain undefined.
+ *
+ * @param {Mixed} val
+ * @return {Boolean}
+ * @api private
+ */
+
+function isUndefined(val) {
+  return val == void(0);
+}
+
+/**
+ * Check for plain null.
+ *
+ * @param {Mixed} val
+ * @return {Boolean}
+ * @api private
+ */
+
+function isNull(val) {
+  return val == null;
+};
+
+/**
+ * Check for iterable protocol.
+ *
+ * iterable means value implements
+ * the iteration protocol.
+ *
+ * @param {Mixed} obj
+ * @return {Boolean}
+ * @api private
+ */
+
+function isIterable(obj) {
+  if (isUndefined(obj)) return false;
+  if (isNull(obj)) return false;
+  return typeof obj[Symbol.iterator] == 'function';
+}
+
+/**
+ * Check if `obj` is a global/window ctx.
+ *
+ * @param {this} obj
+ * @return {Boolean}
+ * @api private
+ */
+
+function isGlobalContext(obj) {
+  var constructor = obj.__proto__.constructor;
+
+  if ('Window' === constructor.name || 'Window' === constructor.displayName) return true;
+  return isCyclic(obj);
+}
+
+/**
+ * Check for circular reference.
+ *
+ * series of references where last
+ * object references the first,
+ * resulting in a closed loop.
+ *
+ * @param {this} obj
+ * @return {Boolean}
+ * @api private
+ */
+
+function isCyclic(obj) {
+  var spy = [];
+
+  function inspect(obj) {
+    if (obj && typeof obj == 'object') {
+      if (spy.indexOf(obj) != -1) return true;
+      spy.push(obj);
+      for (var key in obj) {
+        if (obj.hasOwnProperty(key) && inspect(obj[key])) return true;
+      }
+    }
+
+    return false;
+  }
+
+  return inspect(obj);
 }

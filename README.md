@@ -27,6 +27,11 @@ $ npm install akinjide/is
 - is.regExp
 - is.func
 - is.asyncFunction
+- is.undef
+- is.nil
+- is.iterable
+- is.globalContext
+- is.cyclic
 
 ## License
 
