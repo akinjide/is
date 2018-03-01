@@ -5,6 +5,8 @@
 
 var is = require('./');
 var size = require('size');
+var x = {};
+x.x = x;
 
 var promise = size({
   bytes: 330307828,
@@ -19,3 +21,4 @@ function* generator(i) {
 console.log(is.promise(promise));
 console.log(is.generatorFunction(generator(10)));
 console.log(is.regExp(/\.js$/));
+console.log(is.cyclic(x));

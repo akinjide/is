@@ -282,8 +282,10 @@ function isIterable(obj) {
 function isGlobalContext(obj) {
   var constructor = obj.__proto__.constructor;
 
+  if (!isCyclic(obj)) return false;
   if ('Window' === constructor.name || 'Window' === constructor.displayName) return true;
-  return isCyclic(obj);
+  if ('node' === obj.process.title && obj.process.env && obj.require) return true;
+  return false;
 }
 
 /**
@@ -293,7 +295,7 @@ function isGlobalContext(obj) {
  * object references the first,
  * resulting in a closed loop.
  *
- * @param {this} obj
+ * @param {Mixed} obj
  * @return {Boolean}
  * @api private
  */
