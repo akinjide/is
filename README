@@ -9,7 +9,7 @@ r@akinjide.me
 
 IS is a type checking for JavaScript.
 
-Installation: using NPM (Node Package Manager) with command npm install akinjide/is.
+Installation: using NPM (Node Package Manager) with command npm install akinjide/is, or make a copy, minify and deploy to your server.
 
 API: usage [https://github.com/akinjide/is/blob/master/example.js]
 
