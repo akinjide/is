@@ -1,5 +1,5 @@
 {
-  "name": "@akinjide/is",
+  "name": "is",
   "version": "1.9.1",
   "description": "type checking for JavaScript",
   "main": "index.js",
@@ -12,7 +12,6 @@
     "type": "git",
     "url": "git+https://github.com/akinjide/is.git"
   },
-  "author": "",
   "bugs": {
     "url": "https://github.com/akinjide/is/issues"
   },
