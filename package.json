@@ -1,9 +1,9 @@
 {
-  "name": "is",
+  "name": "@akinjide/is",
   "version": "1.9.1",
-  "description": "type checking for js",
+  "description": "type checking for JavaScript",
   "main": "index.js",
-  "keywords": ["node", "type", "strict", "typecheck", "is"],
+  "keywords": ["node", "type", "strict", "typecheck", "is", "utility", "assert", "check"],
   "author": "Akinjide Bankole <r@akinjide.me>",
   "scripts": {
     "test": "mocha --reporter dot --growl --bail --ui bdd"
