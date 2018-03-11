@@ -1,16 +1,17 @@
+IS [![Build Status][travis-svg]][travis-url]
 
-## is
-[![Build Status][travis-svg]][travis-url]
 
-type checking for js.
+Akinjide Bankole
+r@akinjide.me
 
-### Installation
+2018-02-09
 
-```
-$ npm install akinjide/is
-```
 
-### API
+IS is a type checking for JavaScript.
+
+Installation: Install using NPM (Node Package Manager) with command _npm install akinjide/is_, require and use APIs below.
+
+API: Check [https://github.com/akinjide/is/blob/master/example.js]
 
 - is.promise
 - is.generator
@@ -32,10 +33,6 @@ $ npm install akinjide/is
 - is.iterable
 - is.globalContext
 - is.cyclic
-
-## License
-
-MIT
 
 [travis-svg]: https://travis-ci.org/akinjide/is.svg?branch=master
 [travis-url]: https://travis-ci.org/akinjide/is
