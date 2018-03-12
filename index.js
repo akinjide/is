@@ -1,3 +1,10 @@
+/*
+    2018-02-08
+    This code should be minified before deployment.
+
+    USE YOUR OWN COPY. IT IS EXTREMELY UNWISE TO LOAD CODE FROM SERVERS YOU DO
+    NOT CONTROL.
+*/
 
 /**
  * Methods.
@@ -23,7 +30,14 @@ var methods = {
   'nil': isNull,
   'iterable': isIterable,
   'globalContext': isGlobalContext,
-  'cyclic': isCyclic
+  'cyclic': isCyclic,
+  'map': isMap,
+  'set': isSet,
+  'def': isDefined,
+  'primitive': isPrimitive,
+  'float': isFloat,
+  'integer': isInt,
+  'boundFunction': isBoundFunction
 };
 
 
@@ -34,7 +48,7 @@ var methods = {
  * @return {Collection}
  * @api public
  */
-//
+
 module.exports = methods;
 
 
@@ -316,4 +330,105 @@ function isCyclic(obj) {
   }
 
   return inspect(obj);
+}
+
+/**
+ * Check for plain map.
+ *
+ * @param {Mixed} val
+ * @return {Boolean}
+ * @api private
+ */
+
+function isMap(val) {
+  return Map == val.constructor;
+}
+
+/**
+ * Check for plain set.
+ *
+ * @param {Mixed} val
+ * @return {Boolean}
+ * @api private
+ */
+
+function isSet(val) {
+  return Set == val.constructor;
+}
+
+/**
+ * Check for plain defined.
+ *
+ * @param {Mixed} val
+ * @return {Boolean}
+ * @api private
+ */
+
+function isDefined(val) {
+  return !isUndefined(val);
+}
+
+/**
+ * Check for primitives.
+ *
+ * ECMAScript standard defines six data types that are primitives:
+ * Boolean, Null, Undefined, Number, String, Symbol (new in ECMAScript 6)
+ *
+ * @param {Mixed} val
+ * @return {Boolean}
+ * @api private
+ */
+
+function isPrimitive(val) {
+  switch (typeof val) {
+    case 'boolean':
+    case 'number':
+    case 'string':
+    case 'symbol':
+    case 'undefined':
+      return true;
+    default:
+      return isNull(val);
+  }
+}
+
+/**
+ * Check if `val` is a float.
+ *
+ * @param {Number} val
+ * @return {Boolean}
+ * @api private
+ */
+
+function isFloat(val) {
+  if (!isNumber(val)) return false;
+  if (isInfinite(val)) return false;
+  return val % 1 != 0;
+}
+
+/**
+ * Check if `val` is an integer.
+ *
+ * @param {Number} val
+ * @return {Boolean}
+ * @api private
+ */
+
+function isInt(val) {
+  if (!isNumber(val)) return false;
+  if (isInfinite(val)) return false;
+  return val % 1 == 0;
+}
+
+/**
+ * Check if `obj` is a bounded function.
+ *
+ * @param {Mixed} val
+ * @return {Boolean}
+ * @api private
+ */
+
+function isBoundFunction(obj) {
+  if (!isFunction(obj)) return false;
+  return !obj.hasOwnProperty('prototype');
 }
