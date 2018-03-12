@@ -11,7 +11,7 @@ IS is a type checking for JavaScript.
 
 Installation: using NPM (Node Package Manager) with command _npm install akinjide/is_, or make a copy, minify and deploy to your server.
 
-API: usage [https://github.com/akinjide/is/blob/master/example.js]
+API: usage [https://github.com/akinjide/is/blob/master/example.js], all exposed API return Boolean while taking in single argument as parameters for execution. Except _instance_ API takes in two arguments, _val_ and _constructor_ as parameters when invoked.
 
 - is.promise
 - is.generator
@@ -33,6 +33,13 @@ API: usage [https://github.com/akinjide/is/blob/master/example.js]
 - is.iterable
 - is.globalContext
 - is.cyclic
+- is.map
+- is.set
+- is.def
+- is.primitive
+- is.float
+- is.integer
+- is.boundFunction
 
 [travis-svg]: https://travis-ci.org/akinjide/is.svg?branch=master
 [travis-url]: https://travis-ci.org/akinjide/is
