@@ -6,7 +6,8 @@
   "keywords": ["node", "type", "strict", "typecheck", "is", "utility", "assert", "check"],
   "author": "Akinjide Bankole <r@akinjide.me>",
   "scripts": {
-    "test": "mocha --reporter dot --growl --bail --ui bdd"
+    "test": "mocha --reporter dot --growl --bail --ui bdd",
+    "hook:minify": "uglifyjs index.js --compress --mangle --output is.min.js"
   },
   "repository": {
     "type": "git",
@@ -17,9 +18,10 @@
   },
   "homepage": "https://github.com/akinjide/is#readme",
   "devDependencies": {
-    "mocha": "*",
     "assert": "^1.4.1",
-    "size": "github:akinjide/size"
+    "mocha": "*",
+    "size": "github:akinjide/size",
+    "uglify-js": "^3.3.16"
   },
   "license": "MIT"
 }
