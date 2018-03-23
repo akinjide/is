@@ -1,6 +1,6 @@
 {
   "name": "is",
-  "version": "1.17.1",
+  "version": "1.19.1",
   "description": "type checking for JavaScript",
   "main": "index.js",
   "keywords": ["node", "type", "strict", "typecheck", "is", "utility", "assert", "check"],

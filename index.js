@@ -37,7 +37,9 @@ var methods = {
   'primitive': isPrimitive,
   'float': isFloat,
   'integer': isInt,
-  'boundFunction': isBoundFunction
+  'boundFunction': isBoundFunction,
+  'odd': isOdd,
+  'even': isEven
 };
 
 
@@ -431,4 +433,32 @@ function isInt(val) {
 function isBoundFunction(obj) {
   if (!isFunction(obj)) return false;
   return !obj.hasOwnProperty('prototype');
+}
+
+/**
+ * Check if `val` is even.
+ *
+ * @param {Number} val
+ * @return {Boolean}
+ * @api private
+ */
+
+function isEven(val) {
+  if (!isNumber(val)) return false;
+  if (isInfinite(val)) return false;
+  return val % 2 == 0;
+}
+
+/**
+ * Check if `val` is odd.
+ *
+ * @param {Number} val
+ * @return {Boolean}
+ * @api private
+ */
+
+function isOdd(val) {
+  if (!isNumber(val)) return false;
+  if (isInfinite(val)) return false;
+  return val % 2 != 0;
 }
