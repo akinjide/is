@@ -39,7 +39,9 @@ var methods = {
   'integer': isInt,
   'boundFunction': isBoundFunction,
   'odd': isOdd,
-  'even': isEven
+  'even': isEven,
+  'finite': isFinite,
+  'prime': isPrime
 };
 
 
@@ -180,7 +182,7 @@ function isError(val) {
 /**
  * Check for plain infinity.
  *
- * @param {Mixed} val
+ * @param {Number} val
  * @return {Boolean}
  * @api private
  */
@@ -461,4 +463,40 @@ function isOdd(val) {
   if (!isNumber(val)) return false;
   if (isInfinite(val)) return false;
   return val % 2 != 0;
+}
+
+/**
+ * Check if `val` is finite.
+ *
+ * @param {Number} val
+ * @return {Boolean}
+ * @api private
+ */
+
+function isFinite(val) {
+  if (!isNumber(val)) return false;
+  if (isInfinite(val)) return false;
+  return true;
+}
+
+/**
+ * def:
+ *   No even number `n` greater than 2 is prime because any such number can
+ *   be expressed as the product `2 × n / 2`. Therefore, every prime number
+ *   other than 2 is an odd number, and is called an odd prime (Wikipedia).
+ *
+ * Check if `val` is prime.
+ *
+ * @param {Number} val
+ * @return {Boolean}
+ * @api private
+ */
+
+function isPrime(val) {
+  if (!isNumber(val)) return false;
+  for (var i = 2; i < val; i++) {
+    if (val % i == 0) return false;
+  }
+
+  return val > 1;
 }

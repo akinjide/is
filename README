@@ -24,7 +24,7 @@ API: usage [https://github.com/akinjide/is/blob/master/example.js], all exposed 
 - is.boolean
 - is.error
 - is.infinite
-- is.instance
+- is.instance <val, constructor>
 - is.regExp
 - is.func
 - is.asyncFunction
@@ -40,6 +40,10 @@ API: usage [https://github.com/akinjide/is/blob/master/example.js], all exposed 
 - is.float
 - is.integer
 - is.boundFunction
+- is.odd
+- is.even
+- is.finite
+- is.prime
 
 [travis-svg]: https://travis-ci.org/akinjide/is.svg?branch=master
 [travis-url]: https://travis-ci.org/akinjide/is
