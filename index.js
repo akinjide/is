@@ -41,7 +41,8 @@ var methods = {
   'odd': isOdd,
   'even': isEven,
   'finite': isFinite,
-  'prime': isPrime
+  'prime': isPrime,
+  'executable': isExecutable
 };
 
 
@@ -499,4 +500,19 @@ function isPrime(val) {
   }
 
   return val > 1;
+}
+
+/**
+ * Check if `val` is executable/invokeable/callable.
+ *
+ * @param {Mixed} val
+ * @return {Boolean}
+ * @api private
+ */
+
+function isExecutable(val) {
+  if (isUndefined(val)) return false;
+  if (isObject(val)) return false;
+  if (!isFunction(val)) return false;
+  return true;
 }
