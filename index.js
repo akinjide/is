@@ -42,7 +42,8 @@ var methods = {
   'even': isEven,
   'finite': isFinite,
   'prime': isPrime,
-  'executable': isExecutable
+  'executable': isExecutable,
+  'callback': isCallback
 };
 
 
@@ -515,4 +516,30 @@ function isExecutable(val) {
   if (isObject(val)) return false;
   if (!isFunction(val)) return false;
   return true;
+}
+
+/**
+ * Check for standard NodeJS error-first callback and
+ * binds value of invoking isCallback.
+ *
+ * @bind isCallback.value {Boolean}
+ * @return {Boolean}
+ * @api private
+ */
+
+function isCallback() {
+  var _arguments = Array.prototype.slice.call(arguments);
+
+  if (!_arguments.length) return isCallback.value = false;
+  if (isFunction(_arguments[0])) {
+    fn = _arguments[0];
+    _arguments = _arguments.slice(1);
+  }
+
+  var valid = _arguments.every(function(argument, i) {
+    return isPrimitive(argument);
+  });
+
+  if (!fn) return isCallback.value = valid;
+  fn.apply(null, [].concat(_arguments, valid));
 }

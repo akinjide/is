@@ -45,6 +45,7 @@ API: usage [https://github.com/akinjide/is/blob/master/example.js], all exposed 
 - is.finite
 - is.prime
 - is.executable
+- is.callback
 
 [travis-svg]: https://travis-ci.org/akinjide/is.svg?branch=master
 [travis-url]: https://travis-ci.org/akinjide/is
