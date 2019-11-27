@@ -43,9 +43,9 @@ var methods = {
   'finite': isFinite,
   'prime': isPrime,
   'executable': isExecutable,
-  'callback': isCallback
+  'callback': isCallback,
+  'arguments': isArguments,
 };
-
 
 /**
  * `is`.
@@ -118,7 +118,7 @@ function isObject(val) {
  */
 
 function isArray(val) {
-  return Array == val.constructor || Array.isArray.call(null, val);;
+  return Array == val.constructor || Array.isArray.call(null, val);
 }
 
 /**
@@ -542,4 +542,19 @@ function isCallback() {
 
   if (!fn) return isCallback.value = valid;
   fn.apply(null, [].concat(_arguments, valid));
+}
+
+/**
+ * Check if `obj` is an
+ *
+ * @param {Object} obj
+ * @return {Boolean}
+ * @api private
+ */
+function isArguments(obj) {
+  var toString = Object.prototype.toString;
+
+  if (!isObject(obj)) return false;
+  if (obj.callee && isFunction(obj.callee)) return true;
+  return toString.call(obj) == "[object Arguments]";
 }

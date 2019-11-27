@@ -43,3 +43,10 @@ function hello(value, callback) {
 
 hello('World', is.callback);
 ASSERT.ok(is.callback.value == false, 'isCallback');
+
+
+function call() {
+  console.log(is.arguments({'a': 1, 'b': 2}))
+}
+
+call(1, 2, 3)

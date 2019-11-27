@@ -3,7 +3,16 @@
   "version": "1.23.2",
   "description": "type checking for JavaScript",
   "main": "index.js",
-  "keywords": ["node", "type", "strict", "typecheck", "is", "utility", "assert", "check"],
+  "keywords": [
+    "node",
+    "type",
+    "strict",
+    "typecheck",
+    "is",
+    "utility",
+    "assert",
+    "check"
+  ],
   "author": "Akinjide Bankole <r@akinjide.me>",
   "scripts": {
     "test": "mocha --reporter dot --growl --bail --ui bdd",
